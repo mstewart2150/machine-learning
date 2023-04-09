@@ -154,3 +154,22 @@ print('Predicted target name:',
 
 y_pred = knn.predict(X_test)
 print('Test set predictions:\n', y_pred)
+
+# the above are the predictions given the testing set we 
+# set aside. Now let's see if they are right.
+
+print('Test set score: {:.2f}'.format(np.mean(y_pred == y_test)))
+np.mean(y_pred == y_test)
+
+# pretty sweet
+
+# here's a summary of the code that we did:
+X_train, X_test, y_train, y_test = train_test_split(iris_dataset['data'],
+                                                    iris_dataset['target'],
+                                                    random_state=0)
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X_train, y_train)
+
+print('Test set score: {:.2f}'.format(knn.score(X_test, y_test)))
+
+# what is a different data set we could try this on?
